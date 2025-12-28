@@ -1,0 +1,18 @@
+[package]
+name = "raze-overlay"
+version = "1.0.0"
+description = "Raze Clan Overlay"
+authors = ["Onkel_Markus"]
+edition = "2025"
+
+[build-dependencies]
+tauri-build = { version = "1.5", features = [] }
+
+[dependencies]
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+tauri = { version = "1.5", features = ["shell-open"] }
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]

@@ -23,19 +23,19 @@ jobs:
         run: npm install
 
       - name: Build App
-        run: npm run tauri build
+        # Das --verbose hilft uns, Fehler zu sehen, falls es wieder nicht klappt
+        run: npm run tauri build -- --verbose
 
-      # NEU: Dieser Schritt zeigt uns im Protokoll, welche Dateien existieren!
-      - name: List Files (Debug)
+      - name: Alles auflisten (Debug)
         run: |
-          echo "Listing release directory:"
-          Get-ChildItem -Path src-tauri/target/release -Recurse
+          echo "Suche nach EXE Dateien..."
+          Get-ChildItem -Path src-tauri/target/release -Recurse -Filter *.exe
         continue-on-error: true
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: RazeOverlay-Windows
-          # Die zwei Sternchen ** bedeuten: Suche in allen Unterordnern nach ALLEM
-          path: src-tauri/target/release/bundle/**
+          name: RazeOverlay-Portable
+          # Der Trick: Wir suchen rekursiv (**) nach jeder .exe im release Ordner
+          path: src-tauri/target/release/**/*.exe
           if-no-files-found: warn

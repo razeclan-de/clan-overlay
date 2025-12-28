@@ -3,7 +3,7 @@ name = "raze-overlay"
 version = "1.0.0"
 description = "Raze Clan Overlay"
 authors = ["Onkel_Markus"]
-edition = "2025"
+edition = "2021"
 
 [build-dependencies]
 tauri-build = { version = "1.5", features = [] }

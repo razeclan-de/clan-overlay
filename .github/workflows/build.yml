@@ -9,12 +9,12 @@ jobs:
   release:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 20
 
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
@@ -26,7 +26,10 @@ jobs:
         run: npm run tauri build
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: RazeOverlay-Windows
           path: src-tauri/target/release/bundle/msi/*.msi
+          # Wichtig für v4: Wenn keine Datei gefunden wird, bricht er nicht ab,
+          # warnt aber. Das hilft beim Debuggen.
+          if-no-files-found: warn

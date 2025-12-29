@@ -8,7 +8,7 @@
   },
   "package": {
     "productName": "RazeOverlay",
-    "version": "1.0.0"
+    "version": "1.0.1"
   },
   "tauri": {
     "allowlist": {
@@ -26,7 +26,7 @@
       "targets": "all",
       "identifier": "com.razeclan.overlay",
       "icon": [
-        "icons/icon.png"
+        "icons/icon.ico"
       ]
     },
     "security": {
@@ -42,7 +42,7 @@
         "decorations": false,
         "transparent": true,
         "alwaysOnTop": true,
-        "skipTaskbar": true
+        "skipTaskbar": false
       }
     ]
   }
